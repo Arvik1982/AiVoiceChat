@@ -14,8 +14,10 @@ app.use(helmet());
 
 const allowedOrigins = [
   "http://localhost:5173",
+  "http://localhost:3000",
+  "https://arvik1982.github.io",
   "https://Arvik1982.github.io",
-  "https://arseny.github.io/chat",
+  "https://chat-app-gh6n.onrender.com",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
