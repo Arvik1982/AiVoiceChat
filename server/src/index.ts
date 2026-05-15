@@ -14,24 +14,42 @@ app.use(helmet());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "http://localhost:3000",
+  "https://Arvik1982.github.io",
+  "https://arseny.github.io/chat",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
+
+console.log("CORS allowed origins:", allowedOrigins);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("CORS not allowed"));
+        console.log(`CORS blocked: ${origin}`);
+        callback(new Error(`CORS not allowed for ${origin}`));
       }
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    message: "ChatGPT API is running",
+    corsAllowed: allowedOrigins,
+  });
+});
 
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
@@ -48,4 +66,5 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log(`API: http://localhost:${PORT}/api/chat`);
+  console.log(`CORS allowed: ${allowedOrigins.join(", ")}`);
 });
