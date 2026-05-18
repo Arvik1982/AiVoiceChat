@@ -41,4 +41,7 @@ PORT=3001
 
 ```bash
 npm run dev
+
 ```
+Демо:
+https://arvik1982.github.io/chat/
