@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Arvik1982.github.io/chat",
+  "homepage": "https://Arvik1982.github.io/AiChat",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
