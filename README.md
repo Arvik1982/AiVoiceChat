@@ -4,7 +4,7 @@ Full-stack приложение с голосовым вводом и интег
 
 ## Демо
 
-[https://arvik1982.github.io/chat](https://arvik1982.github.io/chat)
+[https://arvik1982.github.io/chat](https://arvik1982.github.io/AiVoiceChat)
 
 ## Технологии
 
@@ -43,5 +43,3 @@ PORT=3001
 npm run dev
 
 ```
-Демо:
-https://arvik1982.github.io/chat/
